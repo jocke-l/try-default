@@ -1,4 +1,4 @@
-__version__ = '1.0.1'
+__version__ = '1.1'
 
 
 def try_default(expr, default):
@@ -10,12 +10,15 @@ def try_default(expr, default):
 
     .. code-block:: python
 
-        try:
-            foo = value_or_exception('bar')
-        except:
-            foo = None
+        empty_list = []
 
-    If the raised exception is not in it, it will be re-raised.
+        try:
+            foo = empty_list[1]
+        except IndexError:
+            foo = 0
+
+    If the raised exception is not in ``default``, it will be
+    re-raised.
 
     :param Function expr: Intended to be a lazy expression,
                           implemented as a function.
@@ -24,6 +27,8 @@ def try_default(expr, default):
              be the specified default value.
     """
 
+    import six
+
     try:
         return expr()
     except BaseException as e:
@@ -31,7 +36,7 @@ def try_default(expr, default):
         # breaking any exception hierarkies. That's why we're
         # looping over `default` instead. That way, we can have
         # Python do the hard OOP work by using `isinstance`.
-        for key, value in default.items():
+        for key, value in six.iteritems(default):
             if isinstance(e, key):
                 return value
 

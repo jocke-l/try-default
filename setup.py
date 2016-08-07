@@ -11,8 +11,9 @@ setup(
     author_email='joakim@5monkeys.se',
     name='try_default',
     py_modules=['try_default'],
+    install_requires=['six'],
     description='A microlibrary for handling exceptions',
-    keywords=['util', 'functional', 'exceptions', 'micro-library'],
+    keywords=['util', 'functional', 'exceptions', 'microlibrary'],
     classifiers=[
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',

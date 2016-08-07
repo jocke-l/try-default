@@ -9,14 +9,14 @@ Example:
 
     from try_default import try_default
 
-    baz = []
-    result = try_default(lambda: baz[0], {IndexError: 'n/a'})
+    foo = []
+    result = try_default(lambda: foo[0], {IndexError: 'n/a'})
     # result: 'n/a'
 
-    baz = ['spam']
-    result = try_default(lambda: baz[0], {IndexError: 'n/a'})
+    foo = ['spam']
+    result = try_default(lambda: foo[0], {IndexError: 'n/a'})
     # result: 'spam'
 
-    result = try_default(lambda: {'egg': baz[0]}['spam'],
-                         {IndexIError: 'n/a/'})
+    bar = {'egg': foo[0]}
+    result = try_default(lambda: bar['spam'], {IndexError: 'n/a'})
     # Raises KeyError
