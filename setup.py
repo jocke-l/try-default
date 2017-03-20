@@ -3,11 +3,13 @@ try:
 except ImportError:
     from distutils.core import setup
 
+import codecs
+
 import try_default
 
 
 def load_file(filename):
-    with open(filename, 'r', encoding='utf-8') as f:
+    with codecs.open(filename, 'r', encoding='utf-8') as f:
         return f.read()
 
 setup(
