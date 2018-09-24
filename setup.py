@@ -1,23 +1,21 @@
+import codecs
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
-
-import codecs
-
-import try_default
 
 
 def load_file(filename):
     with codecs.open(filename, 'r', encoding='utf-8') as f:
         return f.read()
 
+
 setup(
-    version=try_default.__version__,
+    version='1.2',
     author='Joakim Saario',
-    author_email='joakim@5monkeys.se',
+    author_email='saario.joakim@gmail.com',
     name='try_default',
-    py_modules=['try_default'],
+    packages=['try_default'],
     install_requires=['six'],
     description='A microlibrary for handling exceptions',
     long_description=load_file('README.rst'),
